@@ -16,8 +16,15 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 // Middleware
 // app.use(cors());
-const allowedOrigins = ['http://localhost:3000', 'https://snk-website-frontend-ngnieav1a-stylenklicks-projects.vercel.app'];
-app.use(cors({ origin: allowedOrigins }));
+// const allowedOrigins = ['http://localhost:3000', 'https://snk-website-frontend-ngnieav1a-stylenklicks-projects.vercel.app'];
+// app.use(cors({ origin: allowedOrigins }));
+
+app.use(cors({
+    origin: ['https://www.stylenklick.com', 'https://stylenklick.com', 'http://localhost:3000', 'https://snk-website-frontend-ngnieav1a-stylenklicks-projects.vercel.app'], // Allow both with and without "www"
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Allow cookies & auth headers if needed
+}));
+
 app.use(bodyParser.json());
 const MONGO_URI = process.env.MONGO_URI || 'your-fallback-connection-string';
 //MongoDb connection
