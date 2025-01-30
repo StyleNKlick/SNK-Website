@@ -16,8 +16,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 // Middleware
 // app.use(cors());
-const allowedOrigins = ['http://localhost:3000', 'https://your-vercel-app.vercel.app'];
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(bodyParser.json());
 const MONGO_URI = process.env.MONGO_URI || 'your-fallback-connection-string';
 //MongoDb connection
@@ -28,6 +27,12 @@ mongoose.connect(MONGO_URI, {
 })
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch((err) => console.error('MongoDB connection error:', err));
+
+mongoose.connect('mongodb://localhost:27017/stylenklick_db', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 // Register a new user
 app.post('/api/register', async (req, res) => {
