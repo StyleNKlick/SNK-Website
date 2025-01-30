@@ -16,7 +16,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 // Middleware
 // app.use(cors());
-const allowedOrigins = ['http://localhost:3000', 'https://your-vercel-app.vercel.app'];
+const allowedOrigins = ['http://localhost:3000', 'https://snk-website-frontend-ngnieav1a-stylenklicks-projects.vercel.app'];
 app.use(cors({ origin: allowedOrigins }));
 app.use(bodyParser.json());
 const MONGO_URI = process.env.MONGO_URI || 'your-fallback-connection-string';
